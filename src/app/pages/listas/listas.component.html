@@ -1,0 +1,8 @@
+
+<ul *ngFor="let lista of listas" class="list-group list-group-flush">
+  <li class="list-group-item">
+    <a (click)="cargarTareas( lista.id )">
+        {{ lista.nombre }}
+    </a>
+  </li>
+</ul>

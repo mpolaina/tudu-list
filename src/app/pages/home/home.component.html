@@ -1,0 +1,62 @@
+<div class="row mt-1">
+
+  <!-- <div class="col-md-3 mb-3">
+      <div class="d-grid">
+        <button class="btn btn-outline-primary" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+          Listas
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+              <app-listas (listaSelect)="cargarListaSelect($event)"></app-listas>
+
+          </div>
+      </div>
+
+  </div> -->
+
+
+  <div class="col-md-6">
+
+    <h3 class="mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+        <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      Lista de tareas
+    </h3>
+
+    <app-add-tareas [listaMeterTarea]="listaSeleccionada"></app-add-tareas>
+
+
+    <ul *ngFor="let tarea of tareas" class="list-group">
+      <li class="list-group-item mb-2 d-flex" [class.completado]="tarea.completada">
+        <input (change)="check( tarea.id )"
+               [checked]="tarea.completada"
+               [ngClass]="{'bg-danger border-danger': tarea.completada}"
+               class="form-check-input me-2"
+               type="checkbox"
+               value=""
+               aria-label="...">
+        {{ tarea.nombre }}
+
+        <a (click)="borrarTarea( tarea.id )"
+           class="ms-auto"
+           [ngClass]="{'text-dark' : !tarea.completada, 'text-danger': tarea.completada}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
+            <path d="M2.037 3.225l1.684 10.104A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671l1.684-10.104C13.627 4.224 11.085 5 8 5c-3.086 0-5.627-.776-5.963-1.775z"/>
+            <path fill-rule="evenodd" d="M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"/>
+          </svg>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
